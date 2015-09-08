@@ -57,7 +57,13 @@ class Thinkific {
         return $this->apis[ $class ];
     }
 
-    public function request( $options ) {
+    /**
+     * Create a Guzzle HTTP request
+     * @param $options
+     *
+     * @return mixed
+     */
+    private function request( $options ) {
         $endpoint = $options['endpoint'];
         $method   = isset( $options['httpmethod'] ) ? $options['httpmethod'] : 'GET';
         $body     = isset( $options['body'] ) ? $options['body'] : [ ];
