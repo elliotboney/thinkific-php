@@ -1,6 +1,6 @@
 <?php
 
-namespace Thinktastic\Thinktastic;
+namespace Thinktastic;
 
 require "vendor/autoload.php";
 

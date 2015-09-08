@@ -8,9 +8,7 @@
         }
     ],
     "autoload" : {
-        "psr-0" : {
-            "Thinktastic" : "src/"
-        }
+        "psr-4" : { "Monolog\\" : "src/Thinktastic" }
     },
     "require": {
         "guzzlehttp/guzzle": "^6.0"
