@@ -1,4 +1,4 @@
-# Thinktastic-php
+# Thinkific PHP SDK
 
 
 This is under heavy construction and in early alpha stages. It is an sdk to help interact with the
