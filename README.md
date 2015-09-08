@@ -38,7 +38,7 @@ $think = new \Thinkific\Thinkific ( [
    ] );
 ```
 
-#### Interacting with the api.
+### Endpoints
 You can reach the following endpoints:
 - Bundles
 - Collections
@@ -58,7 +58,7 @@ $bundles = $think->bundles();
 // etc, etc
 ```
 
-##### Methods
+### Methods
 The classes have the basic requests for GET, PUT, POST, DELETE with the Id parameter as well a getAll.
 If the endpoint doesn't support the call, an `ApiException()` will be thrown.
 Some examples of accessing these endpoints:
