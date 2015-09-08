@@ -1,1 +1,1 @@
-# thinktastic-php
+# Thinktastic-php

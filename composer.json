@@ -1,5 +1,5 @@
 {
-    "name": "elliotboney/thinktastic-php",
+    "name": "elliotboney/thinkific-php",
     "description": "PHP SDK for interacting with the Thinktastic LMS Api",
     "authors": [
         {
@@ -8,7 +8,7 @@
         }
     ],
     "autoload" : {
-        "psr-4" : { "Thinktastic\\" : "src/Thinktastic" }
+        "psr-4" : { "Thinkific\\" : "src/Thinkific" }
     },
     "require": {
         "guzzlehttp/guzzle": "^6.0"
