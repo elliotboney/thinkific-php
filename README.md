@@ -54,7 +54,10 @@ You can reach the following endpoints:
 
 by using the following scheme:
 ```php
+// Create interface to access Users endpoint
 $users = $think->users();
+
+// Create interface to access Bundles endpoint
 $bundles = $think->bundles();
 // etc, etc
 ```
