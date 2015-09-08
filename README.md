@@ -18,7 +18,8 @@ requirement for thinkific-api to `dev-master`
    "require": {
       "elliotboney/thinkific-api": "dev-master"
    }
-}```
+}
+```
 
 
 #### Via command line:
