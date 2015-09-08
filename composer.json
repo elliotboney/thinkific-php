@@ -1,0 +1,18 @@
+{
+    "name": "elliotboney/thinktastic-php",
+    "description": "PHP SDK for interacting with the Thinktastic LMS Api",
+    "authors": [
+        {
+            "name": "Elliot Boney",
+            "email": "elliotboney@gmail.com"
+        }
+    ],
+    "autoload" : {
+        "psr-0" : {
+            "Thinktastic" : "src/"
+        }
+    },
+    "require": {
+        "guzzle/guzzle": "^3.9"
+    }
+}
