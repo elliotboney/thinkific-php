@@ -77,7 +77,7 @@ $users->getById(1234);
 $users->add([
     "first_name" => "John",
     "last_name" => "Doe",
-    "email"=>"matt@example.com",
+    "email"=>"johndoe@example.com",
     "roles"=>[]
   ]);
 
@@ -85,7 +85,7 @@ $users->add([
 $users->update( 1234, [
     "first_name" => "John",
     "last_name" => "Doe",
-    "email"=>"matt@example.com",
+    "email"=>"johndoe@example.com",
     "roles"=>[]
   ]);
 
