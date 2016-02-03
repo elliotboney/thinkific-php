@@ -2,10 +2,7 @@
 
 namespace Thinkific;
 
-//require "vendor/autoload.php";
-
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientErrorResponseException;
 use GuzzleHttp\Exception\ClientException;
 
 class Thinkific {
@@ -33,7 +30,6 @@ class Thinkific {
             $this->debug = $config['debug'];
         }
 
-//        echo "made me for " . $this->subdomain . "thinkific.com!";
     }
 
     public function __call( $method, $args ) {
@@ -60,6 +56,7 @@ class Thinkific {
 
     /**
      * Create a Guzzle HTTP request
+     *
      * @param $options
      *
      * @return mixed
@@ -78,12 +75,11 @@ class Thinkific {
         }
 
         if ( isset( $options['query'] ) ) {
-            $url .= "?". http_build_query( $options['query'] );
+            $url .= "?" . http_build_query( $options['query'] );
         }
 
-
         $reqoptions['headers'] = [
-//            'User-Agent'       => 'thinkific-php/1.0',
+            //            'User-Agent'       => 'thinkific-php/1.0',
             'Accept'           => 'application/json',
             'X-Auth-API-Key'   => $this->apikey,
             'X-Auth-Subdomain' => $this->subdomain
@@ -99,11 +95,11 @@ class Thinkific {
             $response = $client->request( $method, $url, $reqoptions );
 
             return $response->getBody();
-        } catch ( ClientException $ex) {
+        } catch ( ClientException $ex ) {
             return "\nError while trying to " . $method . ' ' . $url . " --> " . $ex->getCode() . " --> " . $ex->getMessage() . "\n" . $ex->getResponse()->getBody();
 
         } catch ( \Exception $e ) {
-            return  "\nError while trying to " . $method . ' ' . $url . " --> " . $e->getCode() . " --> " . $e->getMessage();
+            return "\nError while trying to " . $method . ' ' . $url . " --> " . $e->getCode() . " --> " . $e->getMessage();
         }
     }
 
