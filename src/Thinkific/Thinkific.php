@@ -2,10 +2,11 @@
 
 namespace Thinkific;
 
-require "vendor/autoload.php";
+//require "vendor/autoload.php";
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientErrorResponseException;
+use GuzzleHttp\Exception\ClientException;
 
 class Thinkific {
 
@@ -32,7 +33,7 @@ class Thinkific {
             $this->debug = $config['debug'];
         }
 
-        echo "made me for " . $this->subdomain . "thinkific.com!";
+//        echo "made me for " . $this->subdomain . "thinkific.com!";
     }
 
     public function __call( $method, $args ) {
@@ -63,7 +64,9 @@ class Thinkific {
      *
      * @return mixed
      */
-    private function request( $options ) {
+    public function request( $options ) {
+        $reqoptions = [ ];
+
         $endpoint = $options['endpoint'];
         $method   = isset( $options['httpmethod'] ) ? $options['httpmethod'] : 'GET';
         $body     = isset( $options['body'] ) ? $options['body'] : [ ];
@@ -74,10 +77,13 @@ class Thinkific {
             $url .= "/" . $options['id'];
         }
 
-        $reqoptions = [ ];
+        if ( isset( $options['query'] ) ) {
+            $url .= "?". http_build_query( $options['query'] );
+        }
+
 
         $reqoptions['headers'] = [
-            'User-Agent'       => 'thinkific-php/1.0',
+//            'User-Agent'       => 'thinkific-php/1.0',
             'Accept'           => 'application/json',
             'X-Auth-API-Key'   => $this->apikey,
             'X-Auth-Subdomain' => $this->subdomain
@@ -92,11 +98,21 @@ class Thinkific {
 
             $response = $client->request( $method, $url, $reqoptions );
 
+            //            echo "<pre>$url</pre>";
+
             return $response->getBody();
+        } catch ( ClientException $ex) {
+//            print_r( $options );
+//            echo "<pre>";
+            return "\nError while trying to " . $method . ' ' . $url . " --> " . $ex->getCode() . " --> " . $ex->getMessage() . "\n" . $ex->getResponse()->getBody();
+//            echo "\n---------\n";
+//            echo $ex->getRequest()->getBody();
+//            echo "</pre>";
 
         } catch ( \Exception $e ) {
-            print_r( $options );
-            die( "\nError while trying to " . $method . ' ' . $url . " --> " . $e->getCode() . " --> " . $e->getMessage() );
+//            print_r( $options );
+//            print_r($e);
+            return  "\nError while trying to " . $method . ' ' . $url . " --> " . $e->getCode() . " --> " . $e->getMessage();
         }
     }
 
