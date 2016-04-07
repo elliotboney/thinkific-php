@@ -1,0 +1,7 @@
+name: elliotboney/thinkific-php
+author:
+  name: Elliot Boney
+  email: elliotboney@gmail.com
+  url: 'http://www.elliotboney.com'
+copyright: 2015 Elliot Boney
+description: PHP SDK for interacting with the Thinkific LMS Api

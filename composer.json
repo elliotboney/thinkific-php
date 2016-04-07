@@ -1,16 +1,22 @@
 {
-    "name": "elliotboney/thinkific-php",
-    "description": "PHP SDK for interacting with the Thinktastic LMS Api",
-    "authors": [
+    "name" : "elliotboney/thinkific-php",
+    "description" : "PHP SDK for interacting with the Thinktastic LMS Api",
+    "keywords" : [ "thinkific", "lms" ],
+    "homepage" : "https://github.com/elliotboney/thinkific-php",
+    "license" : "MIT",
+    "authors" : [
         {
-            "name": "Elliot Boney",
-            "email": "elliotboney@gmail.com"
+            "name" : "Elliot Boney",
+            "email" : "elliotboney@gmail.com",
+            "homepage" : "http://elliotboney.com/",
+            "role" : "Developer"
         }
     ],
     "autoload" : {
         "psr-4" : { "Thinkific\\" : "src/Thinkific" }
     },
-    "require": {
-        "guzzlehttp/guzzle": "^6.0"
+    "require" : {
+        "php" : ">=5.5.0",
+        "guzzlehttp/guzzle" : "^6.0"
     }
 }
