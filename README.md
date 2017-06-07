@@ -16,7 +16,7 @@ requirement for thinkific-api to `dev-master`
 ```json
 {
    "require": {
-      "elliotboney/thinkific-api": "dev-master"
+      "elliotboney/thinkific-php": "dev-master"
    }
 }
 ```
@@ -24,7 +24,7 @@ requirement for thinkific-api to `dev-master`
 
 #### Via command line:
 ```shell
-composer require elliotboney/thinkific-api
+composer require elliotboney/thinkific-php
 ```
 
 
