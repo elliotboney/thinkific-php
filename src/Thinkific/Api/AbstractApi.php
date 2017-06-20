@@ -92,7 +92,7 @@ abstract class AbstractApi {
     public function delete( $id ) {
         $class_name = preg_split( '/\\\/', get_class( $this ) );
         return json_decode( $this->client->request( [
-            "endpoint"   => strtolower( array_pop( $class_name ) ) ),
+            "endpoint"   => strtolower( array_pop( $class_name ) ),
             "httpmethod" => "DELETE",
             "id"         => $id
         ] ) );
