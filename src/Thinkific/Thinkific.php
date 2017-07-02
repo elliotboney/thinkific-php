@@ -86,7 +86,8 @@ class Thinkific {
         ];
 
         if ( count( $body ) > 0 ) {
-            $reqoptions['body'] = json_encode( $body );
+            //$reqoptions['body'] = json_encode( $body );
+            $reqoptions['form_params'] = $body;
         }
 
         try {
