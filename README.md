@@ -1,5 +1,5 @@
 # Thinkific PHP SDK
-
+[![Dependency Status](https://beta.gemnasium.com/badges/github.com/elliotboney/thinkific-php.svg)](https://beta.gemnasium.com/projects/github.com/elliotboney/thinkific-php)
 
 This is under heavy construction and in early alpha stages. It is an sdk to help interact with the
 [Thinkific LMS](http://www.thinkific.com/) API. The documentation for that REST Api can be found
