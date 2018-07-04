@@ -2,6 +2,11 @@
 
 namespace Thinkific\Api;
 
+/**
+ * Class Users
+ *
+ * @package Thinkific\Api
+ */
 class Users extends AbstractApi {
 
     public function query( $data ) {

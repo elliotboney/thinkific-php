@@ -4,7 +4,13 @@ namespace Thinkific;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 
+/**
+ * Class Thinkific
+ *
+ * @package Thinkific
+ */
 class Thinkific {
 
     protected $url = "https://api.thinkific.com/api/public/";
@@ -15,10 +21,10 @@ class Thinkific {
     private $apikey;
     private $subdomain;
 
-    protected $apis = [ ];
+    protected $apis = [];
     protected $debug = false;
 
-    function __construct( $config = [ ] ) {
+    function __construct( $config = [] ) {
 
         if ( isset( $config['apikey'] ) ) {
             $this->apikey = $config['apikey'];
@@ -32,6 +38,12 @@ class Thinkific {
 
     }
 
+    /**
+     * @param string $method Method to call
+     * @param array  $args   Method arguments
+     *
+     * @return mixed
+     */
     public function __call( $method, $args ) {
         return $this->getApi( ucwords( $method ) );
     }
@@ -62,11 +74,11 @@ class Thinkific {
      * @return mixed
      */
     public function request( $options ) {
-        $reqoptions = [ ];
+        $reqoptions = [];
 
         $endpoint = $options['endpoint'];
         $method   = isset( $options['httpmethod'] ) ? $options['httpmethod'] : 'GET';
-        $body     = isset( $options['body'] ) ? $options['body'] : [ ];
+        $body     = isset( $options['body'] ) ? $options['body'] : [];
 
         $url = $this->url . "v" . $this->apiversion . "/" . $endpoint;
 
@@ -79,14 +91,13 @@ class Thinkific {
         }
 
         $reqoptions['headers'] = [
-//            'User-Agent'       => 'thinkific-php/1.0',
+            //            'User-Agent'       => 'thinkific-php/1.0',
             'Accept'           => 'application/json',
             'X-Auth-API-Key'   => $this->apikey,
             'X-Auth-Subdomain' => $this->subdomain
         ];
 
         if ( count( $body ) > 0 ) {
-            //$reqoptions['body'] = json_encode( $body );
             $reqoptions['form_params'] = $body;
         }
 
@@ -95,17 +106,11 @@ class Thinkific {
 
             $response = $client->request( $method, $url, $reqoptions );
 
-            //            echo "<pre>$url</pre>";
-
             return $response->getBody();
         } catch ( ClientException $ex ) {
-//            print_r( $options );
-//            echo "<pre>";
             return "\nError while trying to " . $method . ' ' . $url . " --> " . $ex->getCode() . " --> " . $ex->getMessage() . "\n" . $ex->getResponse()->getBody();
-//            echo "\n---------\n";
-//            echo $ex->getRequest()->getBody();
-//            echo "</pre>";
-
+        } catch ( GuzzleException $e ) {
+            return "\nError while trying to " . $method . ' ' . $url . " --> " . $e->getCode() . " --> " . $e->getMessage();
         } catch ( \Exception $e ) {
             return "\nError while trying to " . $method . ' ' . $url . " --> " . $e->getCode() . " --> " . $e->getMessage();
         }
